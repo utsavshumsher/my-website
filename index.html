@@ -1,268 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style media="screen">
-    * {
-     margin: 0;
-     padding: 0;
-   }
-   html, body { 
-    height: 100%; 
-    margin: 0; 
-    overflow: hidden;
-  }
-  body { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    background: #000; 
-  }
-  main {
-    display: flex;
-  }
-  p {
-    line-height: 1;
-  }
-  span {
-    display: block;
-    width: 2vmax; 
-    height: 2vmax; 
-    font-size: 2vmax; 
-    color: #9bff9b11;
-    text-align: center;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-  }
+    <meta charset="utf-8">
+    <title>FreeFolio - Freelancer Portfolio Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
-   body {
-     background-image: linear-gradient(to bottom, #030420, #000000 70%);
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 100vw;
-     height: 100vh;
-     overflow: hidden;
-   }
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-   hr {
-     width: 50px;
-     border-color: transparent;
-     border-right-color: rgba(255, 255, 255, 0.7);
-     border-right-width: 50px;
-     position: absolute;
-     bottom: 100%;
-     transform-origin: 100% 50%;
-     animation-name: rain;
-     animation-duration: 1s;
-     animation-timing-function: linear;
-     animation-iteration-count: infinite;
-   }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-   @keyframes rain {
-     from {
-       transform: rotate(105deg) translateX(0);
-     } 
-     to {
-       transform: rotate(105deg) translateX(calc(100vh + 20px));
-     }
-   }
-   
-   .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .card {
-    width: 400px;
-    padding: 20px;
-    margin: 20px;
-    background-color: #f2f2f2;
-    box-shadow: 2px 2px 10px #ccc;
-    border-radius: 5px;
-    text-align: center;
-    background-image: linear-gradient(to right, #fffbd5, #b20a2c);
-
-  }
-  
-  .card img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .card h1 {
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    margin-bottom: 20px;
-  }
-  
-  .card button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .card button:hover {
-    background-color: #3e8e41;
-  }
-
-
-  </style>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
-  <body>
-    <div class="container">
-      <div class="card">
-        <img src="data:image/jpeg;base64,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" alt="profile picture">
-        <h1>Utsav Shumsher Thapa</h1>
-        <p>Web Developer</p>
-        <p>Eklo Company</p>
-        <p>Email: utsavshumsherthapa@gmail.com</p>
-        <p>Phone: 9812544174</p>
-        <button onclick="window.location.href = 'resume.html'">View Resume</button>
-      </div>
-    </div>
-</body> 
-<script type="text/javascript">
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand ml-lg-3">
+            <h1 class="m-0 display-5"><span class="text-primary">Us</span>Thapa</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav m-auto py-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+                <a href="#qualification" class="nav-item nav-link">Quality</a>
+                <a href="#skill" class="nav-item nav-link">Skill</a>
+                <a href="#service" class="nav-item nav-link">Service</a>
+                <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
+                <a href="#testimonial" class="nav-item nav-link">Review</a>
+                <a href="#contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-menu d-none d-lg-block" style="background-color:#457efa; color: #ffffff;">Hire Me</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
 
-  let hrElement;
-  let counter = 100;
-  for (let i = 0; i < counter; i++) {
-    hrElement = document.createElement("HR");
-    
-      hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-      hrElement.style.animationDuration = 0.2 + Math.random() * 0.3 + "s";
-      hrElement.style.animationDelay = Math.random() * 5 + "s";
-   
-    document.body.appendChild(hrElement);
-  }
-  function r(from, to) {
-    return ~~(Math.random() * (to - from + 1) + from);
-  }
-  function pick() {
-    return arguments[r(0, arguments.length - 1)];
-  }
-  function getChar() {
-    return String.fromCharCode(pick(
-      r(0x3041, 0x30ff),
-      r(0x2000, 0x206f),
-      r(0x0020, 0x003f)
-    ));
-  }
-  function loop(fn, delay) {
-    let stamp = Date.now();
-    function _loop() {
-      if (Date.now() - stamp >= delay) {
-        fn(); stamp = Date.now();
-      }
-      requestAnimationFrame(_loop);
-    }
-    requestAnimationFrame(_loop);
-  }
-  class Char {
-    constructor() {
-      this.element = document.createElement('span');
-      this.mutate();
-    }
-    mutate() {
-      this.element.textContent = getChar();
-    }
-  }
-  class Trail {
-    constructor(list = [], options) {
-      this.list = list;
-      this.options = Object.assign(
-        { size: 10, offset: 0 }, options
-      );
-      this.body = [];
-      this.move();
-    }
-    traverse(fn) {
-      this.body.forEach((n, i) => {
-        let last = (i == this.body.length - 1);
-        if (n) fn(n, i, last);
-      });
-    }
-    move() {
-      this.body = [];
-      let { offset, size } = this.options;
-      for (let i = 0; i < size; ++i) {
-        let item = this.list[offset + i - size + 1];
-        this.body.push(item);
-      }
-      this.options.offset = 
-        (offset + 1) % (this.list.length + size - 1);
-    }
-  }
-  class Rain {
-    constructor({ target, row }) {
-      this.element = document.createElement('p');
-      this.build(row);
-      if (target) {
-        target.appendChild(this.element);
-      }
-      this.drop();
-    }
-    build(row = 20) {
-      let root = document.createDocumentFragment();
-      let chars = [];
-      for (let i = 0; i < row; ++i) {
-        let c = new Char();
-        root.appendChild(c.element);
-        chars.push(c);
-        if (Math.random() < .5) {
-          loop(() => c.mutate(), r(1e3, 5e3));
-        }
-      }
-      this.trail = new Trail(chars, { 
-        size: r(10, 30), offset: r(0, 100) 
-      });
-      this.element.appendChild(root); 
-    }
-    drop() {
-      let trail = this.trail;
-      let len = trail.body.length;
-      let delay = r(10, 100);
-      loop(() => {
-        trail.move();
-        trail.traverse((c, i, last) => {
-          c.element.style = `
-            color: hsl(136, 100%, ${85 / len * (i + 1)}%)
-          `;
-          if (last) {
-            c.mutate();
-            c.element.style = `
-              color: hsl(136, 100%, 85%);
-              text-shadow:
-                0 0 .5em #fff,
-                0 0 .5em currentColor;
-            `;
-          }
-        });
-      }, delay);
-    }
-  }
-  
-  const main = document.querySelector('main');
-  for (let i = 0; i < 50; ++i) {
-    new Rain({ target: main, row: 50 });
-  }
  
 
-</script>
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
+        <div class="container">
+            <div class="row align-items-center">
+               
+                <div class="col-lg-7 text-center text-lg-left">
+                    <h3 class="text-white font-weight-normal mb-3">Hello, my name</h3>
+                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 4px #ffffff;">Utsav Shumsher Thapa</h1>
+                    <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
+                    <div class="typed-text d-none">Web Designer, Web Developer, Front End Developer, Apps Designer, Apps Developer</div>
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                        <a href="" class="btn btn-white mr-4">Download CV</a>
+                        
+                        <a href="" class="btn btn-blue d-none d-sm-block">Play Video</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-8 pl-lg-0 pb-5 pb-lg-4 about-img">
+                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/brp.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5" id="about">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
+                <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 pb-4 pb-lg-0">
+                    <img class="img-fluid rounded w-100" src="img/about.jpg" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <h3 class="mb-4">UI/UX Designer & Web Developer</h3>
+                    <p>My name is Utsav Shumsher Thapa and I'm from Nepalgunj, Nepal. Currently, I am residing in Kathmandu for my studies. I am currently pursuing my degree in Software Engineering from Softwarica College of IT and E-commerce. I am 19 years old and passionate about technology and its possibilities. I believe that technology can be used as a tool to make our lives better and easier. I am driven to learn new skills and stay up to date with the latest technologies. I have always been fascinated with the idea of creating something new and unique. I find joy in solving complex problems and coming up with innovative solutions. I am a quick learner and adaptable to new environments. I am excited to continue my journey in the tech industry and make a positive impact through my work. You can reach me at my email address and via my social media handles. I look forward to connecting with you.</p>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Utsav Shumsher Thapa</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">13 July 2003</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">Bachelor</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">2 Years</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">+977 9812544174</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">utsavshumsherthapa@gmail.com</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">Pipalbot, Dillibazar, Kathmandu</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
+                    </div>
+                    <a href="" class="btn blue btn-outline-primary mr-4">Hire Me</a>
+                    <a href="" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    
+    <!-- Skill Start -->
+    <div class="container-fluid py-5" id="skill">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
+                <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">HTML</h6>
+                            <h6 class="font-weight-bold">95%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">CSS</h6>
+                            <h6 class="font-weight-bold">85%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">PHP</h6>
+                            <h6 class="font-weight-bold">90%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">Javascript</h6>
+                            <h6 class="font-weight-bold">90%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">Angular JS</h6>
+                            <h6 class="font-weight-bold">95%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">Wordpress</h6>
+                            <h6 class="font-weight-bold">85%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Skill End -->
+
+
+
+
+    <!-- Qualification Start -->
+    <div class="container-fluid py-5" id="qualification">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Quality</h1>
+                <h1 class="position-absolute text-uppercase text-primary">Education & Expericence</h1>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">My Education</h3>
+                    <div class="border-left border-primary pt-2 pl-4 ml-2">
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -35px; font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">Bachelor In Information Technology</h5>
+                            <p class="mb-2"><strong>Coventry University</strong> | <small>2021 - 2023</small></p>
+                            <p>I am not aware of your education, but I can tell you that Coventry University is a public research university located in Coventry, England. It offers a wide range of undergraduate and postgraduate courses across multiple faculties such as Engineering, Health and Life Sciences, Business and Law, Arts and Humanities and many more. </p>
+                        </div>
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -35px;  font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">+2 </h5>
+                            <p class="mb-2"><strong>Modern School</strong> | <small>2009 - 2011</small></p>
+                            <p>I completed my plus 2 education at Modern Public Higher Secondary School, which is a well-known school in the region for providing high-quality education and a wide range of extracurricular activities. The school has a diverse student population and a dedicated team of teachers who are committed to helping students reach their full potential. </p>
+                        </div>
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -35px;  font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">High Level</h5>
+                            <p class="mb-2"><strong>Gorkha School</strong> | <small>2011 - 2015</small></p>
+                            <p>I completed my high school education at Gorkha United Public Higher Secondary School, which is a well-known and reputable school in the region. The school is known for its strong academic programs, dedicated teachers, and a wide range of extracurricular activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">My Expericence</h3>
+                    <div class="border-left border-primary pt-2 pl-4 ml-2">
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
+                            <p class="mb-2"><strong>Soft Company</strong> | <small> Excellent</small></p>
+                            <p>As an experienced web designer at Soft Company, I have had the opportunity to work on a wide range of web design projects for clients in various industries. My role includes working closely with clients to understand their unique needs and goals, and then using my design skills </p>
+                        </div>
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">Artificial Intelligence</h5>
+                            <p class="mb-2"><strong>Soft Company</strong> | <small> Good</small></p>
+                            <p>As an experienced professional in an AI company, I have had the opportunity to work on a wide range of projects related to Artificial Intelligence and Machine Learning. My role includes working closely with a team of experts in the field to develop and implement cutting-edge AI solutions for clients in various industries.</p>
+                        </div>
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">Web Development</h5>
+                            <p class="mb-2"><strong>Soft Company</strong> | <small> Excellent</small></p>
+                            <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Qualification End -->
+
+
+
+    <!-- Services Start -->
+    <div class="container-fluid pt-5" id="service">
+        <div class="container">
+            <div class="service-h4 position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
+                <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
+            </div>
+            <div class="row pb-3">
+                <div class="service-box col-lg-4 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Web Design</h4>
+                    </div>
+                    <p> The different areas of web design include web graphic design; user interface design ; including standardised code and proprietary software; user experience design; and search engine optimization.</p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+                <div class="service-box col-lg-3 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Development</h4>
+                    </div>
+                    <p>Web development is the building and maintenance of websites; it's the work that happens behind the scenes to make a website look great, work fast and perform well with a seamless user experience.</p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+                <div class="service-box col-lg-4 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Apps Design</h4>
+                    </div>
+                    <p>App design combines the user interface (UI) and user experience (UX). While UI lends itself to the overall style of the app (including the colors, fonts, and general look and feel), UX focuses on the actual functionality and usability.</p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+                <div class="service-box col-lg-4 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Apps Development</h4>
+                    </div>
+                    <p>Application development is the process of creating a computer program or a set of programs to perform the different tasks that a business requires. </p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+                <div class="service-box col-lg-3 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">SEO</h4>
+                    </div>
+                    <p>SEO means Search Engine Optimization and is the process used to optimize a website's technical configuration, content relevance and link popularity so its pages can become easily findable, more relevant and popular towards user search queries, and as a consequence, search engines rank them better.  </p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+                <div class="service-box col-lg-4  col-md-7 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Content Creating</h4>
+                    </div>
+                    <p>Content creation is the process of identifying a new topic you want to write about, deciding which form you want the content to take, formalizing your strategy (keyword or otherwise), and then actually producing it.</p>
+                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+
+    <!-- Portfolio Start -->
+    <div class="container-fluid pt-5 pb-3" id="portfolio">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
+                <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <ul class="list-inline mb-4" id="portfolio-flters">
+                        <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="*">All</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Design</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Development</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Marketing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row portfolio-container">
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-2.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-3.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-4.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-5.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                    <div class="position-relative overflow-hidden mb-2">
+                        <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-6.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5" id="testimonial">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Review</h1>
+                <h1 class="position-absolute text-uppercase text-primary">Clients Say</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-light mb-4">"According to the client, they were extremely impressed with the level of expertise and dedication displayed by the development team throughout the entire app development process, and they are thrilled with the final product, which has exceeded all of their expectations."</h4>
+                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                            <h5 class="font-weight-bold m-0">James Smith</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-light mb-4">The client praised the web development team for their exceptional work on the project, noting that their attention to detail, creativity and willingness to go above and beyond to ensure the client's satisfaction was truly outstanding. They were particularly impressed with the team's ability to understand and implement their unique vision and requirements, resulting in a website that not only looks fantastic but also functions seamlessly. Overall, the client is extremely pleased with the end result and highly recommends the development team to others.</h4>
+                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+                            <h5 class="font-weight-bold m-0">Jacob Brown</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-light mb-4">The client expressed their gratitude towards the SEO team, stating that since the implementation of the new strategies, they have seen a significant increase in their online visibility and search engine rankings. They were particularly impressed with the team's ability to identify and target key keywords, as well as their ongoing efforts to stay current with the latest industry trends and algorithm updates. The client also mentioned that the team's regular reporting and communication has been invaluable in keeping them informed and in control of the process. Overall, the client is extremely satisfied with the results and looks forward to continuing to work with the team in the future.</h4>
+                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
+                            <h5 class="font-weight-bold m-0">Michael Davis</h5>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+ 
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5" id="contact">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
+                <h1 class="position-absolute text-uppercase text-primary">Contact Me</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form text-center">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="form-row">
+                                <div class="control-group col-sm-6">
+                                    <input type="text" class="form-control p-4" id="name" placeholder="Your Name"
+                                        required="required" data-validation-required-message="Please enter your name" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email"
+                                        required="required" data-validation-required-message="Please enter your email" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject"
+                                    required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
+                                    required="required"
+                                    data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
+                                    Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-primary text-white mt-5 py-1 px-sm-1 px-md-5">
+        <div class="container text-center py-5">
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <a class="text-white" href="#">Privacy</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">Terms</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">FAQs</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">Help</a>
+            </div>
+            <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">MysteryCode</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="#">Mystery Code</a>
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
 </html>
