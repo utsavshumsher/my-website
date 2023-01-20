@@ -1,64 +1,130 @@
-
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Profile</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      
-      .card {
-        width: 400px;
-        padding: 20px;
-        margin: 20px;
-        background-color: #f2f2f2;
-        box-shadow: 2px 2px 10px #ccc;
-        border-radius: 5px;
-        text-align: center;
-      }
-      
-      .card img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin-bottom: 20px;
-      }
-      
-      .card h1 {
-        margin-bottom: 10px;
-      }
-      
-      .card p {
-        margin-bottom: 20px;
-      }
-      
-      .card button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-      
-      .card button:hover {
-        background-color: #3e8e41;
-      }
-    </style>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    * {
+     margin: 0;
+     padding: 0;
+   }
+   html, body { 
+    height: 100%; 
+    margin: 0; 
+    overflow: hidden;
+  }
+  body { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background: #000; 
+  }
+  main {
+    display: flex;
+  }
+  p {
+    line-height: 1;
+  }
+  span {
+    display: block;
+    width: 2vmax; 
+    height: 2vmax; 
+    font-size: 2vmax; 
+    color: #9bff9b11;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+  }
+
+   body {
+     background-image: linear-gradient(to bottom, #030420, #000000 70%);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100vw;
+     height: 100vh;
+     overflow: hidden;
+   }
+
+
+
+   hr {
+     width: 50px;
+     border-color: transparent;
+     border-right-color: rgba(255, 255, 255, 0.7);
+     border-right-width: 50px;
+     position: absolute;
+     bottom: 100%;
+     transform-origin: 100% 50%;
+     animation-name: rain;
+     animation-duration: 1s;
+     animation-timing-function: linear;
+     animation-iteration-count: infinite;
+   }
+
+   @keyframes rain {
+     from {
+       transform: rotate(105deg) translateX(0);
+     } 
+     to {
+       transform: rotate(105deg) translateX(calc(100vh + 20px));
+     }
+   }
+   
+   .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    width: 400px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 2px 2px 10px #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-image: linear-gradient(to right, #fffbd5, #b20a2c);
+
+  }
+  
+  .card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .card h1 {
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 20px;
+  }
+  
+  .card button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .card button:hover {
+    background-color: #3e8e41;
+  }
+
+
+  </style>
+</head>
+
   <body>
     <div class="container">
       <div class="card">
@@ -71,5 +137,132 @@
         <button onclick="window.location.href = 'resume.html'">View Resume</button>
       </div>
     </div>
-  </body>
+</body> 
+<script type="text/javascript">
+
+  let hrElement;
+  let counter = 100;
+  for (let i = 0; i < counter; i++) {
+    hrElement = document.createElement("HR");
+    
+      hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+      hrElement.style.animationDuration = 0.2 + Math.random() * 0.3 + "s";
+      hrElement.style.animationDelay = Math.random() * 5 + "s";
+   
+    document.body.appendChild(hrElement);
+  }
+  function r(from, to) {
+    return ~~(Math.random() * (to - from + 1) + from);
+  }
+  function pick() {
+    return arguments[r(0, arguments.length - 1)];
+  }
+  function getChar() {
+    return String.fromCharCode(pick(
+      r(0x3041, 0x30ff),
+      r(0x2000, 0x206f),
+      r(0x0020, 0x003f)
+    ));
+  }
+  function loop(fn, delay) {
+    let stamp = Date.now();
+    function _loop() {
+      if (Date.now() - stamp >= delay) {
+        fn(); stamp = Date.now();
+      }
+      requestAnimationFrame(_loop);
+    }
+    requestAnimationFrame(_loop);
+  }
+  class Char {
+    constructor() {
+      this.element = document.createElement('span');
+      this.mutate();
+    }
+    mutate() {
+      this.element.textContent = getChar();
+    }
+  }
+  class Trail {
+    constructor(list = [], options) {
+      this.list = list;
+      this.options = Object.assign(
+        { size: 10, offset: 0 }, options
+      );
+      this.body = [];
+      this.move();
+    }
+    traverse(fn) {
+      this.body.forEach((n, i) => {
+        let last = (i == this.body.length - 1);
+        if (n) fn(n, i, last);
+      });
+    }
+    move() {
+      this.body = [];
+      let { offset, size } = this.options;
+      for (let i = 0; i < size; ++i) {
+        let item = this.list[offset + i - size + 1];
+        this.body.push(item);
+      }
+      this.options.offset = 
+        (offset + 1) % (this.list.length + size - 1);
+    }
+  }
+  class Rain {
+    constructor({ target, row }) {
+      this.element = document.createElement('p');
+      this.build(row);
+      if (target) {
+        target.appendChild(this.element);
+      }
+      this.drop();
+    }
+    build(row = 20) {
+      let root = document.createDocumentFragment();
+      let chars = [];
+      for (let i = 0; i < row; ++i) {
+        let c = new Char();
+        root.appendChild(c.element);
+        chars.push(c);
+        if (Math.random() < .5) {
+          loop(() => c.mutate(), r(1e3, 5e3));
+        }
+      }
+      this.trail = new Trail(chars, { 
+        size: r(10, 30), offset: r(0, 100) 
+      });
+      this.element.appendChild(root); 
+    }
+    drop() {
+      let trail = this.trail;
+      let len = trail.body.length;
+      let delay = r(10, 100);
+      loop(() => {
+        trail.move();
+        trail.traverse((c, i, last) => {
+          c.element.style = `
+            color: hsl(136, 100%, ${85 / len * (i + 1)}%)
+          `;
+          if (last) {
+            c.mutate();
+            c.element.style = `
+              color: hsl(136, 100%, 85%);
+              text-shadow:
+                0 0 .5em #fff,
+                0 0 .5em currentColor;
+            `;
+          }
+        });
+      }, delay);
+    }
+  }
+  
+  const main = document.querySelector('main');
+  for (let i = 0; i < 50; ++i) {
+    new Rain({ target: main, row: 50 });
+  }
+ 
+
+</script>
 </html>
